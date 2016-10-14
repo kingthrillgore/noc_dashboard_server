@@ -34,6 +34,7 @@ TBD
 
 ## Components
 The following Python libraries are used in this application:
+
 * Flask
 * Gevent
 * Flask-SocketIO
