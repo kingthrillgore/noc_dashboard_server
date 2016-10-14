@@ -12,22 +12,26 @@ If you want to run this through real hardware, a Gunicorn and WSGI binding is in
 
 ## Installation
 Clone this repo
-```shell
+```
+#!shell
 $ git clone git@bitbucket.org:internaldevck/noc_dashboard_server.git
 ```
 
 Activate virtualenv
-```shell
+```
+#!shell
 $ source {VENV_FILE}
 ```
 
 Install the required components
-```shell
+```
+#!shell
 $ pip install -r requirements.txt
 ```
 
 And start the server
-```shell
+```
+#!shell
 $ python server.py -port 8080
 ```
 
@@ -56,20 +60,23 @@ By default, the server will run through available sources for changes every minu
 
 * For Services, a system monitored **enters a CRITICAL state** or **33% of the active services for a host default to a state besides NORMAL**.
 * For Network, when an ntop-recovered feed confirms **no local address has shown a response for longer than 30 seconds**, or **the packet loss increases to over 50% of requests made over 10 seconds**.
-* For Weather, **when an update from the NWS Alerts indicates an Emergency that meets the Event Level of WARN** [\[1\]](https://en.wikipedia.org/wiki/Specific_Area_Message_Encoding#Event_codes)
+* For Weather, **when an update from the NWS Alerts indicates an Emergency that meets the Event Level of WRN** [\[1\]](https://en.wikipedia.org/wiki/Specific_Area_Message_Encoding#Event_codes)
+
+By default all feeds will update when a change is detected on their source feeds. They are updated every 30 seconds by default (excluding weather, which is checked every 120 seconds). The settings, update periods, and thresholds can be configured by editing `settings.json`.
+
+Existing records are kept in `cache` and are flushed out every hour.
 
 ## Using the NWS Alert Proxy
 The National Weather Service for some really stupid reasons imposes Access-Control-Allow-Origin headers on any requests made to the Alerts service. To access a JSON version of the latest alerts, simply send a GET request to `/alerts/weather/{{FIPSCODE}}`. The contents will look sorta like this:
 
-```json
+```
+#!javascript
 {
   'example':9999
 }
 ```
 
 You can also request the original CAP-encoded XML by passing `?xml=1` in the URL string. But why would you want to do that?
-
-I am legally required to inform you that EAS SAME codes are not used in this service. Not that it would matter anyways.
 
 ## Libraries
 The following Python libraries are used in this application:
