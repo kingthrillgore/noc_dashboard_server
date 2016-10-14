@@ -51,7 +51,25 @@ Restart Apache, and check if your changes work.
 ## Configuration
 TBD
 
-## Components
+## Setting up Alerts
+By default, the server will run through available sources for changes every minute, and send an Event Active to all connected clients when a change of the following nature occurs:
+
+* For Services, a system monitored **enters a CRITICAL state** or **33% of the active services for a host default to a state besides NORMAL**.
+* For Network, when an ntop-recovered feed confirms **no local address has shown a response for longer than 30 seconds**, or **the packet loss increases to over 50% of requests made over 10 seconds**.
+* For Weather, **when an update from the NWS Alerts indicates an Emergency that meets the Event Level of WARN** [\[1\]](https://en.wikipedia.org/wiki/Specific_Area_Message_Encoding#Event_codes)
+
+## Using the NWS Alert Proxy
+The National Weather Service for some really stupid reasons imposes Access-Control-Allow-Origin headers on any requests made to the Alerts service. To access a JSON version of the latest alerts, simply send a GET request to `/alerts/weather/{{FIPSCODE}}`. The contents will look sorta like this:
+
+```json
+{
+  'example':9999
+}
+```
+
+You can also request the original CAP-encoded XML by passing `?xml=1` in the URL string. But why would you want to do that?
+
+## Libraries
 The following Python libraries are used in this application:
 
 * Flask
