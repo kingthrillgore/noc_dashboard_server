@@ -69,6 +69,8 @@ The National Weather Service for some really stupid reasons imposes Access-Contr
 
 You can also request the original CAP-encoded XML by passing `?xml=1` in the URL string. But why would you want to do that?
 
+I am legally required to inform you that EAS SAME codes are not used in this service. Not that it would matter anyways.
+
 ## Libraries
 The following Python libraries are used in this application:
 
