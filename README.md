@@ -14,7 +14,7 @@ Clone this repo
 $ git clone git@bitbucket.org:internaldevck/noc_dashboard_server.git
 ```
 
-Activate VirtualEnv
+Activate virtualenv
 ```shell
 $ source {VENV_FILE}
 ```
@@ -38,9 +38,10 @@ The following Python libraries are used in this application:
 * Flask
 * Gevent
 * Flask-SocketIO
-* PyJSON
+* (A Python JSON library to be determined later on)
 * BeautifulSoup
-* pyCAP
+* WeatherAlerts
+* Scapy
 
 ## License
-Licensed under the MIT License, like the NOC Dashboard. See LICENSE.md.
+Licensed under the MIT License, like the NOC Dashboard. See LICENSE.md. Python licenses used are subject to their own separate licenses.
