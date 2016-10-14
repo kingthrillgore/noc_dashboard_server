@@ -6,7 +6,9 @@ By its own, the NOC Dashboard is capable of many things. But with this tentpole 
 * Advanced Statistics for Network
 
 ## Requirements
-A server with Python 2.7+, pip and virtualenv is required. If you want to run this through real hardware, a Gunicorn and mod\_WSGI binding is included in the repo.
+A server with Python 2.7+, pip and virtualenv is required.
+
+If you want to run this through real hardware, a Gunicorn and WSGI binding is included in the repo.
 
 ## Installation
 Clone this repo
@@ -28,6 +30,23 @@ And start the server
 ```shell
 $ python server.py -port 8080
 ```
+
+### Setting up Gunicorn
+TBD
+
+### Setting up WSGI w/ Apache
+TBD
+
+### Setting up WSGI w/ Nginx
+TBD
+
+### If all else fails: Forward Proxy w/ Apache2
+Create a conf file with the following settings:
+
+```
+TBD
+```
+Restart Apache, and check if your changes work.
 
 ## Configuration
 TBD
