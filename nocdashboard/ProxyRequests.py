@@ -12,6 +12,8 @@ import os
 import requests
 
 from flask import request, session, url_for, redirect
+from nocdashboard import app
+from werkzeug import Response
 
 @app.route('/')
 def home_index():
@@ -19,22 +21,32 @@ def home_index():
     they're doing here. """
     # TODO return render_template call
 
-@app.route("/passthrough/<source_url>")
+@app.route("/passthrough", methods=['GET'])
 def passthrough_rest_object(source_url):
     """ Passes through a non-CORS locked down JSON object from the origin
     request. """
-    req = requests.get(source_url)
-    if req.status_code == 200:
-        return req.content
-    else:
-        return false
+    if request.method == 'GET':
+        reqUrl = request.args.get('url','')
+        req = requests.get(reqUrl)
+        if req.status_code == 200:
+            return req.content
+        else:
+            return false
 
-@app.route('/passthrough_xml/<source_url>')
+@app.route('/passthrough_xml', methods=['GET'])
 def passthrough_xml_object():
     """ Passes through a non-CORS locked down XML object from the origin
     request. """
-    req = requests.get(source_url)
-    if req.status_code == 200:
-        return req.content
-    else:
-        return false
+    if request.method == 'GET':
+        reqUrl = request.args.get('url','')
+        req = requests.get(reqUrl)
+
+        if req.status_code == 200:
+            return Response(req.content, content_type='text/xml; charset=utf-8')
+        else:
+            return false
+
+@app.route('/passthrough_xml_to_json', methods=['GET'])
+def passthrough_xml_to_json():
+    """ Retrieves a XML file and then attempts to convert to JSON, and returns
+    through the request. """

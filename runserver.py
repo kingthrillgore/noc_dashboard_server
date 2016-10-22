@@ -10,6 +10,7 @@
 """
 import os
 import sys
+from nocdashboard import app, ProxyRequests
 
 def usage():
     """ Display how to use the Server. """
@@ -40,11 +41,8 @@ def main():
 
     # Gets Config file
 
-    # Initalizes Flask and other Objects needed
-
     # Tell the user the location of the Server
-    print "Server Online and accepting requests at http://127.0.0.1:4510."
-    print "To terminate server, press CTRL-C."
+    app.run(debug=True)
 
 if __name__ == '__main__':
     main()
