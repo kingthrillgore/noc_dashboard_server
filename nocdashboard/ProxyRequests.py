@@ -42,7 +42,10 @@ def passthrough_xml_object():
         req = requests.get(reqUrl)
 
         if req.status_code == 200:
-            return Response(req.content, content_type='text/xml; charset=utf-8')
+            resp = Response(req.content, content_type='text/xml; charset=utf-8')
+            resp.headers['Access-Control-Allow-Origin'] = '*'
+            #return Response(req.content, content_type='text/xml; charset=utf-8,', headers="Access-Control-Allow-Origin: *")
+            return resp
         else:
             return false
 
