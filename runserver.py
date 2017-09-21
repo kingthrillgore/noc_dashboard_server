@@ -42,7 +42,7 @@ def main():
     # Gets Config file
 
     # Tell the user the location of the Server
-    app.run(debug=True)
+    app.run()
 
 if __name__ == '__main__':
     main()
