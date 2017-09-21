@@ -85,7 +85,7 @@ The following Python libraries are used in this application:
 ## Improvements? Suggestions
 If you think there are improvements to be made, open up a ticket and make a pull request. There are some tasks open that may be worth covering.
 
-I will address any new issues and PRs that are sent my way (bandwidth permitting). (Given how most programmers treat pull requests)[http://www.urbandictionary.com/define.php?term=patches+are+welcome&defid=7833039], It's the least I can do.
+I will attempt to address any new issues and PRs that are sent my way (bandwidth permitting). [Given how most programmers treat pull requests](http://www.urbandictionary.com/define.php?term=patches+are+welcome&defid=7833039), It's the least I can do.
 
 ## License
 Licensed under the MIT License, like the NOC Dashboard. See LICENSE.md. Python libraries used are subject to their own separate licenses.
